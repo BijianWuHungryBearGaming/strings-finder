@@ -1,4 +1,4 @@
-import { Box, Button, FormControlLabel, FormLabel, Paper, Radio, RadioGroup, Stack, TextField } from "@mui/material";
+import { Box, Button, FormControlLabel, FormLabel, Grid, Paper, Radio, RadioGroup, Stack, TextField } from "@mui/material";
 import { useState } from "react";
 
 function SearchForm() {
@@ -62,53 +62,73 @@ function SearchForm() {
     return (<>
         <form onSubmit={customHandleSubmmit}>
             <Paper elevation={10}>
-                <Box
-                sx={{  p: 2}}
-                display="flex"   
-                flexDirection={"column"}
-                justifyContent="center"
-                alignItems="center"
-                // key={data && data.id ? + "gameForm-" + data.id : "gameForm-0"}
-                >
+                <Grid container rowSpacing={1} columnSpacing={3}   direction="column"
+  justifyContent="center"
+  alignItems="center">
+
+                <Grid item xs={12} alignContent={"center"} justifyContent={"center"}>
                     <Stack direction="row" spacing={2} sx={{alignItems: "center"}}>
-                    <FormLabel required>Search Term</FormLabel>
-                    <TextField        
+                        <FormLabel required>Search Term</FormLabel>
+                        <TextField        
+                            sx={{ "minWidth": "300px"}} name={"mainTitle"}  variant="outlined" required value={term}  onChange={(e)=> setTerm(e.target.value)} 
+                        />
+                    </Stack>
+                </Grid>
 
+                <Grid item xs={12}>
 
-                        sx={{ "minWidth": "300px"}} name={"mainTitle"}  variant="outlined" required value={term}  onChange={(e)=> setTerm(e.target.value)} 
-                    />
+                    <Stack direction="row" spacing={2} sx={{alignItems: "center"}}>
+                        <FormLabel required>Occurrence</FormLabel>
+                        <RadioGroup
+                            name={`count`}
+                            row
+                            aria-labelledby="botDelay-radio-buttons-group-label"
+                            value={occurrences}
+                            onChange={ (e) => setOccurrences(e.target.value)}
+
+                        >
+                            <FormControlLabel value={1} control={<Radio />} label="1" />
+                            <FormControlLabel value={2} control={<Radio />} label="2" />
+                            <FormControlLabel value={3} control={<Radio />} label="3" />
+                            <FormControlLabel value={4} control={<Radio />} label="4" />
+                            <FormControlLabel value={5} control={<Radio />} label="5" />
+                            <FormControlLabel value={6} control={<Radio />} label="6" />
+                        </RadioGroup> 
                     </Stack>
 
 
-                    <RadioGroup
-                        name={`count`}
-                        row
-                        aria-labelledby="botDelay-radio-buttons-group-label"
-                        value={occurrences}
-                        onChange={ (e) => setOccurrences(e.target.value)}
-
-                    >
-                    <FormControlLabel value={1} control={<Radio />} label="1" />
-                    <FormControlLabel value={2} control={<Radio />} label="2" />
-                    <FormControlLabel value={3} control={<Radio />} label="3" />
-                    <FormControlLabel value={4} control={<Radio />} label="4" />
-                    <FormControlLabel value={5} control={<Radio />} label="5" />
-                    <FormControlLabel value={6} control={<Radio />} label="6" />
-                    </RadioGroup>           
-
+                </Grid>
+                
+                <Grid item xs={12}>
 
                     <Stack direction="row" spacing={2} sx={{alignItems: "center"}}>
-                    <FormLabel required>From</FormLabel>
-                    <TextField        
-
-
-                        sx={{ "minWidth": "500px"}} name={"mainTitle"}  variant="outlined" required value={from}  onChange={(e)=> setFrom(e.target.value)} 
-                    />
+                        <FormLabel required>From</FormLabel>
+                        <TextField        
+                            sx={{ "minWidth": "500px"}} label="Result" name={"mainTitle"}  variant="outlined" required value={from}  onChange={(e)=> setFrom(e.target.value)} 
+                        />
 
                     </Stack>
-                    <TextField id="outlined-basic" label="Result" variant="outlined" value={result} disabled />
+                </Grid>
+
+                <Grid item xs={12}>
+                    <Stack direction="row" spacing={2} sx={{alignItems: "center"}}>
+                        <FormLabel >Result</FormLabel>
+                        <TextField id="outlined-basic" variant="standard" value={result} disabled />
+
+                    </Stack>
+
+                </Grid>                                                
+
+                <Grid item xs={12}>
                     <Button type="submit" variant="contained" color="success" size="large" sx={{m:1}}> {"Search"}</Button>
-                </Box>
+                </Grid>    
+
+          
+
+
+
+
+                </Grid>
             </Paper>
 
         </form>
