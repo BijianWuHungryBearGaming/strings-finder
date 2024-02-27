@@ -12,7 +12,7 @@ function SearchForm({label}) {
     const customHandleSubmmit = async (e) => {
         e.preventDefault();
         
-        const arrayStrings =  from.split(",");
+        const arrayStrings = from.split(",").map(str => str.trim());
         setResult("Not Found");
         setNumbers("");
         if(occurrences == "1"){
