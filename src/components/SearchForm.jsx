@@ -5,124 +5,157 @@ function SearchForm({label}) {
     const[customLabel, setCustomLabel] = useState(label);
     const[term, setTerm] = useState("");
     const[from, setFrom] = useState("");
-    const[result, setResult] = useState("");
-    const[numbers, setNumbers] = useState("");
     const[occurrences, setOccurrences] = useState("1");
     const[printNumbers, setPrintNumbers] = useState("3");
+
+    const[result, setResult] = useState("");
+    const[results, setResults] = useState([]);
+    const[numbers, setNumbers] = useState("");
     const customHandleSubmmit = async (e) => {
         e.preventDefault();
         
         const arrayStrings = from.split(",").map(str => str.trim());
-        setResult("Not Found");
-        setNumbers("");
+        // setResult("Not Found");
+        // setNumbers("");
         if(occurrences == "1"){
+            const newArray = [];
             for(let i = 0; i < arrayStrings.length; i++){
+
                 if(arrayStrings[i] === term){
-                    setResult(i);
+                    let numbers = "";
                     if(printNumbers == "1"){
-                        setNumbers(arrayStrings[i]);
+                        numbers = (arrayStrings[i]);
                     } else if(printNumbers == "2"){
-                        setNumbers(arrayStrings[i] + "," + arrayStrings[(i + 1) % arrayStrings.length]);
+                        numbers = (arrayStrings[i] + "," + arrayStrings[(i + 1) % arrayStrings.length]);
                     } else if(printNumbers == "3"){
-                        setNumbers(arrayStrings[i] + "," + arrayStrings[(i + 1) % arrayStrings.length] + "," + arrayStrings[(i + 2) % arrayStrings.length]);
+                        numbers = (arrayStrings[i] + "," + arrayStrings[(i + 1) % arrayStrings.length] + "," + arrayStrings[(i + 2) % arrayStrings.length]);
                     } else if(printNumbers == "4"){
-                        setNumbers(arrayStrings[i] + "," + arrayStrings[(i + 1) % arrayStrings.length] + "," + arrayStrings[(i + 2) % arrayStrings.length] + "," + arrayStrings[(i + 3) % arrayStrings.length]);
+                        numbers = (arrayStrings[i] + "," + arrayStrings[(i + 1) % arrayStrings.length] + "," + arrayStrings[(i + 2) % arrayStrings.length] + "," + arrayStrings[(i + 3) % arrayStrings.length]);
                     } else if(printNumbers == "5"){
-                        setNumbers(arrayStrings[i] + "," + arrayStrings[(i + 1) % arrayStrings.length] + "," + arrayStrings[(i + 2) % arrayStrings.length] + "," + arrayStrings[(i + 3) % arrayStrings.length] + "," + arrayStrings[(i + 4) % arrayStrings.length]);
+                        numbers = (arrayStrings[i] + "," + arrayStrings[(i + 1) % arrayStrings.length] + "," + arrayStrings[(i + 2) % arrayStrings.length] + "," + arrayStrings[(i + 3) % arrayStrings.length] + "," + arrayStrings[(i + 4) % arrayStrings.length]);
                     }
-                    break;
+                    newArray.push({
+                        atIndex: i,
+                        numbers: numbers
+                    });
                 }
             }
+            setResults(newArray);
         } else if(occurrences == "2"){
+            const newArray = [];
             for(let i = 0; i < arrayStrings.length - 1; i++){
                 if(arrayStrings[i] === term && arrayStrings[i + 1] === term){
-                    setResult(i);
+                    let numbers = "";
                     if(printNumbers == "1"){
-                        setNumbers(arrayStrings[i]);
+                        numbers = (arrayStrings[i]);
                     } else if(printNumbers == "2"){
-                        setNumbers(arrayStrings[i] + "," + arrayStrings[(i + 1) % arrayStrings.length]);
+                        numbers = (arrayStrings[i] + "," + arrayStrings[(i + 1) % arrayStrings.length]);
                     } else if(printNumbers == "3"){
-                        setNumbers(arrayStrings[i] + "," + arrayStrings[(i + 1) % arrayStrings.length] + "," + arrayStrings[(i + 2) % arrayStrings.length]);
+                        numbers = (arrayStrings[i] + "," + arrayStrings[(i + 1) % arrayStrings.length] + "," + arrayStrings[(i + 2) % arrayStrings.length]);
                     } else if(printNumbers == "4"){
-                        setNumbers(arrayStrings[i] + "," + arrayStrings[(i + 1) % arrayStrings.length] + "," + arrayStrings[(i + 2) % arrayStrings.length] + "," + arrayStrings[(i + 3) % arrayStrings.length]);
+                        numbers = (arrayStrings[i] + "," + arrayStrings[(i + 1) % arrayStrings.length] + "," + arrayStrings[(i + 2) % arrayStrings.length] + "," + arrayStrings[(i + 3) % arrayStrings.length]);
                     } else if(printNumbers == "5"){
-                        setNumbers(arrayStrings[i] + "," + arrayStrings[(i + 1) % arrayStrings.length] + "," + arrayStrings[(i + 2) % arrayStrings.length] + "," + arrayStrings[(i + 3) % arrayStrings.length] + "," + arrayStrings[(i + 4) % arrayStrings.length]);
+                        numbers = (arrayStrings[i] + "," + arrayStrings[(i + 1) % arrayStrings.length] + "," + arrayStrings[(i + 2) % arrayStrings.length] + "," + arrayStrings[(i + 3) % arrayStrings.length] + "," + arrayStrings[(i + 4) % arrayStrings.length]);
                     }
-                    break;
+                    newArray.push({
+                        atIndex: i,
+                        numbers: numbers
+                    });
                 }
             }
+            setResults(newArray);
         } else if(occurrences == "3"){
+            const newArray = [];
             for(let i = 0; i < arrayStrings.length - 2; i++){
                 if(arrayStrings[i] === term && arrayStrings[i + 1] === term && arrayStrings[i + 2] === term){
-                    setResult(i);
+                    let numbers = "";
                     if(printNumbers == "1"){
-                        setNumbers(arrayStrings[i]);
+                        numbers = (arrayStrings[i]);
                     } else if(printNumbers == "2"){
-                        setNumbers(arrayStrings[i] + "," + arrayStrings[(i + 1) % arrayStrings.length]);
+                        numbers = (arrayStrings[i] + "," + arrayStrings[(i + 1) % arrayStrings.length]);
                     } else if(printNumbers == "3"){
-                        setNumbers(arrayStrings[i] + "," + arrayStrings[(i + 1) % arrayStrings.length] + "," + arrayStrings[(i + 2) % arrayStrings.length]);
+                        numbers = (arrayStrings[i] + "," + arrayStrings[(i + 1) % arrayStrings.length] + "," + arrayStrings[(i + 2) % arrayStrings.length]);
                     } else if(printNumbers == "4"){
-                        setNumbers(arrayStrings[i] + "," + arrayStrings[(i + 1) % arrayStrings.length] + "," + arrayStrings[(i + 2) % arrayStrings.length] + "," + arrayStrings[(i + 3) % arrayStrings.length]);
+                        numbers = (arrayStrings[i] + "," + arrayStrings[(i + 1) % arrayStrings.length] + "," + arrayStrings[(i + 2) % arrayStrings.length] + "," + arrayStrings[(i + 3) % arrayStrings.length]);
                     } else if(printNumbers == "5"){
-                        setNumbers(arrayStrings[i] + "," + arrayStrings[(i + 1) % arrayStrings.length] + "," + arrayStrings[(i + 2) % arrayStrings.length] + "," + arrayStrings[(i + 3) % arrayStrings.length] + "," + arrayStrings[(i + 4) % arrayStrings.length]);
+                        numbers = (arrayStrings[i] + "," + arrayStrings[(i + 1) % arrayStrings.length] + "," + arrayStrings[(i + 2) % arrayStrings.length] + "," + arrayStrings[(i + 3) % arrayStrings.length] + "," + arrayStrings[(i + 4) % arrayStrings.length]);
                     }
-                    break;
+                    newArray.push({
+                        atIndex: i,
+                        numbers: numbers
+                    });
                 }
             }
+            setResults(newArray);
         } else if(occurrences == "4"){
+            const newArray = [];
             for(let i = 0; i < arrayStrings.length - 3; i++){
                 if(arrayStrings[i] === term && arrayStrings[i + 1] === term && arrayStrings[i + 2] === term && arrayStrings[i + 3] === term){
-                    setResult(i);
+                    let numbers = "";
                     if(printNumbers == "1"){
-                        setNumbers(arrayStrings[i]);
+                        numbers = (arrayStrings[i]);
                     } else if(printNumbers == "2"){
-                        setNumbers(arrayStrings[i] + "," + arrayStrings[(i + 1) % arrayStrings.length]);
+                        numbers = (arrayStrings[i] + "," + arrayStrings[(i + 1) % arrayStrings.length]);
                     } else if(printNumbers == "3"){
-                        setNumbers(arrayStrings[i] + "," + arrayStrings[(i + 1) % arrayStrings.length] + "," + arrayStrings[(i + 2) % arrayStrings.length]);
+                        numbers = (arrayStrings[i] + "," + arrayStrings[(i + 1) % arrayStrings.length] + "," + arrayStrings[(i + 2) % arrayStrings.length]);
                     } else if(printNumbers == "4"){
-                        setNumbers(arrayStrings[i] + "," + arrayStrings[(i + 1) % arrayStrings.length] + "," + arrayStrings[(i + 2) % arrayStrings.length] + "," + arrayStrings[(i + 3) % arrayStrings.length]);
+                        numbers = (arrayStrings[i] + "," + arrayStrings[(i + 1) % arrayStrings.length] + "," + arrayStrings[(i + 2) % arrayStrings.length] + "," + arrayStrings[(i + 3) % arrayStrings.length]);
                     } else if(printNumbers == "5"){
-                        setNumbers(arrayStrings[i] + "," + arrayStrings[(i + 1) % arrayStrings.length] + "," + arrayStrings[(i + 2) % arrayStrings.length] + "," + arrayStrings[(i + 3) % arrayStrings.length] + "," + arrayStrings[(i + 4) % arrayStrings.length]);
+                        numbers = (arrayStrings[i] + "," + arrayStrings[(i + 1) % arrayStrings.length] + "," + arrayStrings[(i + 2) % arrayStrings.length] + "," + arrayStrings[(i + 3) % arrayStrings.length] + "," + arrayStrings[(i + 4) % arrayStrings.length]);
                     }
-                    break;
+                    newArray.push({
+                        atIndex: i,
+                        numbers: numbers
+                    });
                 }
             }
+            setResults(newArray);
         } else if(occurrences == "5"){
+            const newArray = [];
             for(let i = 0; i < arrayStrings.length - 4; i++){
                 if(arrayStrings[i] === term && arrayStrings[i + 1] === term && arrayStrings[i + 2] === term && arrayStrings[i + 3] === term && arrayStrings[i + 4] === term){
-                    setResult(i);
+                    let numbers = "";
                     if(printNumbers == "1"){
-                        setNumbers(arrayStrings[i]);
+                        numbers = (arrayStrings[i]);
                     } else if(printNumbers == "2"){
-                        setNumbers(arrayStrings[i] + "," + arrayStrings[(i + 1) % arrayStrings.length]);
+                        numbers = (arrayStrings[i] + "," + arrayStrings[(i + 1) % arrayStrings.length]);
                     } else if(printNumbers == "3"){
-                        setNumbers(arrayStrings[i] + "," + arrayStrings[(i + 1) % arrayStrings.length] + "," + arrayStrings[(i + 2) % arrayStrings.length]);
+                        numbers = (arrayStrings[i] + "," + arrayStrings[(i + 1) % arrayStrings.length] + "," + arrayStrings[(i + 2) % arrayStrings.length]);
                     } else if(printNumbers == "4"){
-                        setNumbers(arrayStrings[i] + "," + arrayStrings[(i + 1) % arrayStrings.length] + "," + arrayStrings[(i + 2) % arrayStrings.length] + "," + arrayStrings[(i + 3) % arrayStrings.length]);
+                        numbers = (arrayStrings[i] + "," + arrayStrings[(i + 1) % arrayStrings.length] + "," + arrayStrings[(i + 2) % arrayStrings.length] + "," + arrayStrings[(i + 3) % arrayStrings.length]);
                     } else if(printNumbers == "5"){
-                        setNumbers(arrayStrings[i] + "," + arrayStrings[(i + 1) % arrayStrings.length] + "," + arrayStrings[(i + 2) % arrayStrings.length] + "," + arrayStrings[(i + 3) % arrayStrings.length] + "," + arrayStrings[(i + 4) % arrayStrings.length]);
+                        numbers = (arrayStrings[i] + "," + arrayStrings[(i + 1) % arrayStrings.length] + "," + arrayStrings[(i + 2) % arrayStrings.length] + "," + arrayStrings[(i + 3) % arrayStrings.length] + "," + arrayStrings[(i + 4) % arrayStrings.length]);
                     }
-                    break;
+                    newArray.push({
+                        atIndex: i,
+                        numbers: numbers
+                    });
                 }
             }
+            setResults(newArray);
         } else if(occurrences == "6"){
+            const newArray = [];
             for(let i = 0; i < arrayStrings.length - 5; i++){
                 if(arrayStrings[i] === term && arrayStrings[i + 1] === term && arrayStrings[i + 2] === term && arrayStrings[i + 3] === term && arrayStrings[i + 4] === term && arrayStrings[i + 5] === term){
-                    setResult(i);
+                    let numbers = "";
                     if(printNumbers == "1"){
-                        setNumbers(arrayStrings[i]);
+                        numbers = (arrayStrings[i]);
                     } else if(printNumbers == "2"){
-                        setNumbers(arrayStrings[i] + "," + arrayStrings[(i + 1) % arrayStrings.length]);
+                        numbers = (arrayStrings[i] + "," + arrayStrings[(i + 1) % arrayStrings.length]);
                     } else if(printNumbers == "3"){
-                        setNumbers(arrayStrings[i] + "," + arrayStrings[(i + 1) % arrayStrings.length] + "," + arrayStrings[(i + 2) % arrayStrings.length]);
+                        numbers = (arrayStrings[i] + "," + arrayStrings[(i + 1) % arrayStrings.length] + "," + arrayStrings[(i + 2) % arrayStrings.length]);
                     } else if(printNumbers == "4"){
-                        setNumbers(arrayStrings[i] + "," + arrayStrings[(i + 1) % arrayStrings.length] + "," + arrayStrings[(i + 2) % arrayStrings.length] + "," + arrayStrings[(i + 3) % arrayStrings.length]);
+                        numbers = (arrayStrings[i] + "," + arrayStrings[(i + 1) % arrayStrings.length] + "," + arrayStrings[(i + 2) % arrayStrings.length] + "," + arrayStrings[(i + 3) % arrayStrings.length]);
                     } else if(printNumbers == "5"){
-                        setNumbers(arrayStrings[i] + "," + arrayStrings[(i + 1) % arrayStrings.length] + "," + arrayStrings[(i + 2) % arrayStrings.length] + "," + arrayStrings[(i + 3) % arrayStrings.length] + "," + arrayStrings[(i + 4) % arrayStrings.length]);
+                        numbers = (arrayStrings[i] + "," + arrayStrings[(i + 1) % arrayStrings.length] + "," + arrayStrings[(i + 2) % arrayStrings.length] + "," + arrayStrings[(i + 3) % arrayStrings.length] + "," + arrayStrings[(i + 4) % arrayStrings.length]);
                     }
-                    break;
+                    newArray.push({
+                        atIndex: i,
+                        numbers: numbers
+                    });
                 }
             }
+            setResults(newArray);
         }
 
 
@@ -131,7 +164,7 @@ function SearchForm({label}) {
 
     return (<>
         <form onSubmit={customHandleSubmmit}>
-            <Paper elevation={10}>
+            <Paper elevation={10} sx={{ py: 2}}>
                 <Grid container rowSpacing={1} columnSpacing={3}   
                 width={"100%"}
                     direction="column"
@@ -208,24 +241,36 @@ function SearchForm({label}) {
 
                     </Stack>
                 </Grid>
-
-                <Grid item xs={12}>
-                    <Stack direction="row" spacing={2} sx={{alignItems: "center"}}>
-                        <FormLabel >At Index</FormLabel>
-                        <TextField id="outlined-basic" variant="standard" value={result} disabled />
-                    </Stack>
-                </Grid>                        
-
-                <Grid item xs={12}>
-                    <Stack direction="row" spacing={2} sx={{alignItems: "center"}}>
-                        <FormLabel >numbers</FormLabel>
-                        <TextField id="outlined-basic" variant="standard" value={numbers} disabled />
-                    </Stack>
-                </Grid>                               
-
                 <Grid item xs={12}>
                     <Button type="submit" variant="contained" color="success" size="large" sx={{m:1}}> {"Search"}</Button>
+                    <Button  variant="contained" color="warning" size="large" sx={{m:1}} onClick={() => setResults([])}> {"Clear"}</Button>
                 </Grid>    
+
+                {
+                    results.map(result => {
+                         return (
+                            <>
+                                <Grid item xs={12} flexWrap={"wrap"}>
+                                    <Paper sx={{p: 3}}>
+                                        <Stack direction="row" spacing={2} sx={{alignItems: "center"}}>
+                                            <FormLabel >At Index</FormLabel>
+                                            <TextField id="outlined-basic" variant="standard" value={result.atIndex} disabled />
+                                        </Stack>
+                                        <Stack direction="row" spacing={2} sx={{alignItems: "center"}}>
+                                            <FormLabel >numbers</FormLabel>
+                                            <TextField id="outlined-basic" variant="standard" value={result.numbers} disabled />
+                                        </Stack>
+                                    </Paper>
+
+                                </Grid>                        
+     
+                            </>
+                        )
+                    })
+                }
+                       
+
+
 
           
 
