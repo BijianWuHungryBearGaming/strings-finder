@@ -1,0 +1,74 @@
+{
+  "name": "strings-finder",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "homepage": "/",
+  "dependencies": {
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@fontsource/roboto": "^5.0.8",
+    "@mui/icons-material": "^5.14.3",
+    "@mui/material": "^5.14.5",
+    "@mui/x-date-pickers": "^6.11.2",
+    "@nivo/core": "^0.83.0",
+    "@nivo/line": "^0.83.0",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "axios": "^1.4.0",
+    "dayjs": "^1.11.9",
+    "formik": "^2.4.5",
+    "i18next": "^22.4.15",
+    "i18next-http-backend": "^2.2.0",
+    "moment": "^2.29.4",
+    "moment-timezone": "^0.5.43",
+    "notistack": "^3.0.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-i18next": "^12.2.2",
+    "react-scripts": "^5.0.1",
+    "react-spring-carousel": "^2.0.19",
+    "sass": "^1.62.1",
+    "web-vitals": "^2.1.4",
+    "yup": "^1.3.2"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "sass": "sass src/assets/sass:src/assets/css --watch --no-source-map"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "react-router-dom": "^6.9.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BijianWuHungryBearGaming/strings-finder.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BijianWuHungryBearGaming/strings-finder/issues"
+  }
+}
