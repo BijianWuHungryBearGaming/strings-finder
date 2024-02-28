@@ -2,7 +2,7 @@ import { Box, Button, FormControlLabel, FormLabel, Grid, Paper, Radio, RadioGrou
 import { closeSnackbar, enqueueSnackbar } from "notistack";
 import { useState } from "react";
 
-function SearchForm({label}) {
+function SearchForm({label, customIndex}) {
     const[customLabel, setCustomLabel] = useState(label);
     const[term, setTerm] = useState("");
     const[from, setFrom] = useState("");
@@ -45,7 +45,7 @@ function SearchForm({label}) {
             if(newArray.length > 0) {
                 enqueueSnackbar("Found " + newArray.length + " matches", {variant: 'success'});
             } else {
-                enqueueSnackbar("No Matching found", {variant: 'error'});
+                enqueueSnackbar("No matches found", {variant: 'error'});
             }
             setResults(newArray);
         } else if(occurrences == "2"){
@@ -74,7 +74,7 @@ function SearchForm({label}) {
             if(newArray.length > 0) {
                 enqueueSnackbar("Found " + newArray.length + " matches", {variant: 'success'});
             } else {
-                enqueueSnackbar("No Matching found", {variant: 'error'});
+                enqueueSnackbar("No matches found", {variant: 'error'});
             }
             setResults(newArray);
         } else if(occurrences == "3"){
@@ -103,7 +103,7 @@ function SearchForm({label}) {
             if(newArray.length > 0) {
                 enqueueSnackbar("Found " + newArray.length + " matches", {variant: 'success'});
             } else {
-                enqueueSnackbar("No Matching found", {variant: 'error'});
+                enqueueSnackbar("No matches found", {variant: 'error'});
             }
             setResults(newArray);
         } else if(occurrences == "4"){
@@ -132,7 +132,7 @@ function SearchForm({label}) {
             if(newArray.length > 0) {
                 enqueueSnackbar("Found " + newArray.length + " matches", {variant: 'success'});
             } else {
-                enqueueSnackbar("No Matching found", {variant: 'error'});
+                enqueueSnackbar("No matches found", {variant: 'error'});
             }
             setResults(newArray);
         } else if(occurrences == "5"){
@@ -161,7 +161,7 @@ function SearchForm({label}) {
             if(newArray.length > 0) {
                 enqueueSnackbar("Found " + newArray.length + " matches", {variant: 'success'});
             } else {
-                enqueueSnackbar("No Matching found", {variant: 'error'});
+                enqueueSnackbar("No matches found", {variant: 'error'});
             }
             setResults(newArray);
         } else if(occurrences == "6"){
@@ -190,7 +190,7 @@ function SearchForm({label}) {
             if(newArray.length > 0) {
                 enqueueSnackbar("Found " + newArray.length + " matches", {variant: 'success'});
             } else {
-                enqueueSnackbar("No Matching found", {variant: 'error'});
+                enqueueSnackbar("No matches found", {variant: 'error'});
             }
             setResults(newArray);
         }
@@ -201,7 +201,7 @@ function SearchForm({label}) {
 
     return (<>
         <form onSubmit={customHandleSubmmit}>
-            <Paper elevation={10} sx={{ py: 2}}>
+            <Paper elevation={10} sx={{ py: 2}} key={customIndex}>
                 <Grid container rowSpacing={1} columnSpacing={3}   
                 width={"100%"}
                     direction="column"
@@ -284,11 +284,11 @@ function SearchForm({label}) {
                 </Grid>    
 
                 {
-                    results.map(result => {
+                    results.map((result, index) => {
                          return (
                             <>
-                                <Grid item xs={12} flexWrap={"wrap"}>
-                                    <Paper sx={{p: 3}}>
+                                <Grid item xs={12} flexWrap={"wrap"} key={customLabel + " " + index}>
+                                    <Paper sx={{p: 3}} >
                                         <Stack direction="row" spacing={2} sx={{alignItems: "center"}}>
                                             <FormLabel >At Index</FormLabel>
                                             <TextField id="outlined-basic" variant="standard" value={result.atIndex} disabled />
