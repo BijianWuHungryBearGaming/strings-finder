@@ -294,7 +294,7 @@ function SearchForm({label, customIndex}) {
                                             <TextField id="outlined-basic" variant="standard" value={result.atIndex} disabled />
                                         </Stack>
                                         <Stack direction="row" spacing={2} sx={{alignItems: "center"}}>
-                                            <FormLabel >numbers</FormLabel>
+                                            <FormLabel >Stops</FormLabel>
                                             <TextField id="outlined-basic" variant="standard" value={result.numbers} disabled />
                                         </Stack>
                                     </Paper>
