@@ -229,7 +229,7 @@ function SearchForm({label, customIndex}) {
 
                 <Grid item xs={12}>
                     <Stack direction="row" spacing={2} sx={{alignItems: "center"}}>
-                        <FormLabel required>Occurrence</FormLabel>
+                        <FormLabel required>Consecutive occurrence</FormLabel>
                         <RadioGroup
                             name={`Occurrence`}
                             row
@@ -249,9 +249,9 @@ function SearchForm({label, customIndex}) {
 
                 <Grid item xs={12}>
                     <Stack direction="row" spacing={2} sx={{alignItems: "center"}}>
-                        <FormLabel required>Show Numbers</FormLabel>
+                        <FormLabel required>Show Stops</FormLabel>
                         <RadioGroup
-                            name={`Show Numbers`}
+                            name={`Show Stops`}
                             row
                             value={printNumbers}
                             onChange={ (e) => setPrintNumbers(e.target.value)}
