@@ -1,4 +1,5 @@
 import { Box, Button, FormControlLabel, FormLabel, Grid, Paper, Radio, RadioGroup, Stack, TextField, Typography } from "@mui/material";
+import { closeSnackbar, enqueueSnackbar } from "notistack";
 import { useState } from "react";
 
 function SearchForm({label}) {
@@ -40,6 +41,12 @@ function SearchForm({label}) {
                     });
                 }
             }
+            closeSnackbar();
+            if(newArray.length > 0) {
+                enqueueSnackbar("Found " + newArray.length + " matches", {variant: 'success'});
+            } else {
+                enqueueSnackbar("No Matching found", {variant: 'error'});
+            }
             setResults(newArray);
         } else if(occurrences == "2"){
             const newArray = [];
@@ -62,6 +69,12 @@ function SearchForm({label}) {
                         numbers: numbers
                     });
                 }
+            }
+            closeSnackbar();
+            if(newArray.length > 0) {
+                enqueueSnackbar("Found " + newArray.length + " matches", {variant: 'success'});
+            } else {
+                enqueueSnackbar("No Matching found", {variant: 'error'});
             }
             setResults(newArray);
         } else if(occurrences == "3"){
@@ -86,6 +99,12 @@ function SearchForm({label}) {
                     });
                 }
             }
+            closeSnackbar();
+            if(newArray.length > 0) {
+                enqueueSnackbar("Found " + newArray.length + " matches", {variant: 'success'});
+            } else {
+                enqueueSnackbar("No Matching found", {variant: 'error'});
+            }
             setResults(newArray);
         } else if(occurrences == "4"){
             const newArray = [];
@@ -108,6 +127,12 @@ function SearchForm({label}) {
                         numbers: numbers
                     });
                 }
+            }
+            closeSnackbar();
+            if(newArray.length > 0) {
+                enqueueSnackbar("Found " + newArray.length + " matches", {variant: 'success'});
+            } else {
+                enqueueSnackbar("No Matching found", {variant: 'error'});
             }
             setResults(newArray);
         } else if(occurrences == "5"){
@@ -132,6 +157,12 @@ function SearchForm({label}) {
                     });
                 }
             }
+            closeSnackbar();
+            if(newArray.length > 0) {
+                enqueueSnackbar("Found " + newArray.length + " matches", {variant: 'success'});
+            } else {
+                enqueueSnackbar("No Matching found", {variant: 'error'});
+            }
             setResults(newArray);
         } else if(occurrences == "6"){
             const newArray = [];
@@ -155,11 +186,17 @@ function SearchForm({label}) {
                     });
                 }
             }
+            closeSnackbar();
+            if(newArray.length > 0) {
+                enqueueSnackbar("Found " + newArray.length + " matches", {variant: 'success'});
+            } else {
+                enqueueSnackbar("No Matching found", {variant: 'error'});
+            }
             setResults(newArray);
         }
 
 
-        console.log("submitted " + occurrences);
+        // console.log("submitted " + occurrences);
     }
 
     return (<>
