@@ -35,6 +35,16 @@ function App() {
                     <Divider>DIVIDER</Divider>
                 </Grid>
 
+                <Grid item xs={12} >
+                    <SearchForm label={"Reel set 6"} customIndex={6}/>
+                    <Divider>DIVIDER</Divider>
+                </Grid>
+
+                <Grid item xs={12} >
+                    <SearchForm label={"Reel set 7"} customIndex={7}/>
+                    <Divider>DIVIDER</Divider>
+                </Grid>                
+
             </Grid>
 
         </SnackbarProvider>
