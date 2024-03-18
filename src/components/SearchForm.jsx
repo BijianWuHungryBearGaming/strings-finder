@@ -12,6 +12,25 @@ function SearchForm({label, customIndex}) {
     const[result, setResult] = useState("");
     const[results, setResults] = useState([]);
     const[numbers, setNumbers] = useState("");
+
+    const getNumbers = (i, arrayStrings) => {
+        if(printNumbers == "1"){
+            return (arrayStrings[i]);
+        } else if(printNumbers == "2"){
+            return (arrayStrings[i] + "," + arrayStrings[(i + 1) % arrayStrings.length]);
+        } else if(printNumbers == "3"){
+            return (arrayStrings[i] + "," + arrayStrings[(i + 1) % arrayStrings.length] + "," + arrayStrings[(i + 2) % arrayStrings.length]);
+        } else if(printNumbers == "4"){
+            return (arrayStrings[i] + "," + arrayStrings[(i + 1) % arrayStrings.length] + "," + arrayStrings[(i + 2) % arrayStrings.length] + "," + arrayStrings[(i + 3) % arrayStrings.length]);
+        } else if(printNumbers == "5"){
+            return (arrayStrings[i] + "," + arrayStrings[(i + 1) % arrayStrings.length] + "," + arrayStrings[(i + 2) % arrayStrings.length] + "," + arrayStrings[(i + 3) % arrayStrings.length] + "," + arrayStrings[(i + 4) % arrayStrings.length]);
+        } else if(printNumbers == "6"){
+            return (arrayStrings[i] + "," + arrayStrings[(i + 1) % arrayStrings.length] + "," + arrayStrings[(i + 2) % arrayStrings.length] + "," + arrayStrings[(i + 3) % arrayStrings.length] + "," + arrayStrings[(i + 4) % arrayStrings.length] + "," + arrayStrings[(i + 5) % arrayStrings.length]) ;
+        } else if(printNumbers == "7"){
+            return (arrayStrings[i] + "," + arrayStrings[(i + 1) % arrayStrings.length] + "," + arrayStrings[(i + 2) % arrayStrings.length] + "," + arrayStrings[(i + 3) % arrayStrings.length] + "," + arrayStrings[(i + 4) % arrayStrings.length]+ "," + arrayStrings[(i + 5) % arrayStrings.length] + "," + arrayStrings[(i + 6) % arrayStrings.length]);
+        }
+    }
+
     const customHandleSubmmit = async (e) => {
         e.preventDefault();
         
@@ -23,18 +42,7 @@ function SearchForm({label, customIndex}) {
             for(let i = 0; i < arrayStrings.length; i++){
 
                 if(arrayStrings[i] === term){
-                    let numbers = "";
-                    if(printNumbers == "1"){
-                        numbers = (arrayStrings[i]);
-                    } else if(printNumbers == "2"){
-                        numbers = (arrayStrings[i] + "," + arrayStrings[(i + 1) % arrayStrings.length]);
-                    } else if(printNumbers == "3"){
-                        numbers = (arrayStrings[i] + "," + arrayStrings[(i + 1) % arrayStrings.length] + "," + arrayStrings[(i + 2) % arrayStrings.length]);
-                    } else if(printNumbers == "4"){
-                        numbers = (arrayStrings[i] + "," + arrayStrings[(i + 1) % arrayStrings.length] + "," + arrayStrings[(i + 2) % arrayStrings.length] + "," + arrayStrings[(i + 3) % arrayStrings.length]);
-                    } else if(printNumbers == "5"){
-                        numbers = (arrayStrings[i] + "," + arrayStrings[(i + 1) % arrayStrings.length] + "," + arrayStrings[(i + 2) % arrayStrings.length] + "," + arrayStrings[(i + 3) % arrayStrings.length] + "," + arrayStrings[(i + 4) % arrayStrings.length]);
-                    }
+                    const numbers = getNumbers(i, arrayStrings);
                     newArray.push({
                         atIndex: i,
                         numbers: numbers
@@ -52,18 +60,7 @@ function SearchForm({label, customIndex}) {
             const newArray = [];
             for(let i = 0; i < arrayStrings.length - 1; i++){
                 if(arrayStrings[i] === term && arrayStrings[i + 1] === term){
-                    let numbers = "";
-                    if(printNumbers == "1"){
-                        numbers = (arrayStrings[i]);
-                    } else if(printNumbers == "2"){
-                        numbers = (arrayStrings[i] + "," + arrayStrings[(i + 1) % arrayStrings.length]);
-                    } else if(printNumbers == "3"){
-                        numbers = (arrayStrings[i] + "," + arrayStrings[(i + 1) % arrayStrings.length] + "," + arrayStrings[(i + 2) % arrayStrings.length]);
-                    } else if(printNumbers == "4"){
-                        numbers = (arrayStrings[i] + "," + arrayStrings[(i + 1) % arrayStrings.length] + "," + arrayStrings[(i + 2) % arrayStrings.length] + "," + arrayStrings[(i + 3) % arrayStrings.length]);
-                    } else if(printNumbers == "5"){
-                        numbers = (arrayStrings[i] + "," + arrayStrings[(i + 1) % arrayStrings.length] + "," + arrayStrings[(i + 2) % arrayStrings.length] + "," + arrayStrings[(i + 3) % arrayStrings.length] + "," + arrayStrings[(i + 4) % arrayStrings.length]);
-                    }
+                    const numbers = getNumbers(i, arrayStrings);
                     newArray.push({
                         atIndex: i,
                         numbers: numbers
@@ -81,18 +78,7 @@ function SearchForm({label, customIndex}) {
             const newArray = [];
             for(let i = 0; i < arrayStrings.length - 2; i++){
                 if(arrayStrings[i] === term && arrayStrings[i + 1] === term && arrayStrings[i + 2] === term){
-                    let numbers = "";
-                    if(printNumbers == "1"){
-                        numbers = (arrayStrings[i]);
-                    } else if(printNumbers == "2"){
-                        numbers = (arrayStrings[i] + "," + arrayStrings[(i + 1) % arrayStrings.length]);
-                    } else if(printNumbers == "3"){
-                        numbers = (arrayStrings[i] + "," + arrayStrings[(i + 1) % arrayStrings.length] + "," + arrayStrings[(i + 2) % arrayStrings.length]);
-                    } else if(printNumbers == "4"){
-                        numbers = (arrayStrings[i] + "," + arrayStrings[(i + 1) % arrayStrings.length] + "," + arrayStrings[(i + 2) % arrayStrings.length] + "," + arrayStrings[(i + 3) % arrayStrings.length]);
-                    } else if(printNumbers == "5"){
-                        numbers = (arrayStrings[i] + "," + arrayStrings[(i + 1) % arrayStrings.length] + "," + arrayStrings[(i + 2) % arrayStrings.length] + "," + arrayStrings[(i + 3) % arrayStrings.length] + "," + arrayStrings[(i + 4) % arrayStrings.length]);
-                    }
+                    const numbers = getNumbers(i, arrayStrings);
                     newArray.push({
                         atIndex: i,
                         numbers: numbers
@@ -110,18 +96,7 @@ function SearchForm({label, customIndex}) {
             const newArray = [];
             for(let i = 0; i < arrayStrings.length - 3; i++){
                 if(arrayStrings[i] === term && arrayStrings[i + 1] === term && arrayStrings[i + 2] === term && arrayStrings[i + 3] === term){
-                    let numbers = "";
-                    if(printNumbers == "1"){
-                        numbers = (arrayStrings[i]);
-                    } else if(printNumbers == "2"){
-                        numbers = (arrayStrings[i] + "," + arrayStrings[(i + 1) % arrayStrings.length]);
-                    } else if(printNumbers == "3"){
-                        numbers = (arrayStrings[i] + "," + arrayStrings[(i + 1) % arrayStrings.length] + "," + arrayStrings[(i + 2) % arrayStrings.length]);
-                    } else if(printNumbers == "4"){
-                        numbers = (arrayStrings[i] + "," + arrayStrings[(i + 1) % arrayStrings.length] + "," + arrayStrings[(i + 2) % arrayStrings.length] + "," + arrayStrings[(i + 3) % arrayStrings.length]);
-                    } else if(printNumbers == "5"){
-                        numbers = (arrayStrings[i] + "," + arrayStrings[(i + 1) % arrayStrings.length] + "," + arrayStrings[(i + 2) % arrayStrings.length] + "," + arrayStrings[(i + 3) % arrayStrings.length] + "," + arrayStrings[(i + 4) % arrayStrings.length]);
-                    }
+                    const numbers = getNumbers(i, arrayStrings);
                     newArray.push({
                         atIndex: i,
                         numbers: numbers
@@ -139,18 +114,7 @@ function SearchForm({label, customIndex}) {
             const newArray = [];
             for(let i = 0; i < arrayStrings.length - 4; i++){
                 if(arrayStrings[i] === term && arrayStrings[i + 1] === term && arrayStrings[i + 2] === term && arrayStrings[i + 3] === term && arrayStrings[i + 4] === term){
-                    let numbers = "";
-                    if(printNumbers == "1"){
-                        numbers = (arrayStrings[i]);
-                    } else if(printNumbers == "2"){
-                        numbers = (arrayStrings[i] + "," + arrayStrings[(i + 1) % arrayStrings.length]);
-                    } else if(printNumbers == "3"){
-                        numbers = (arrayStrings[i] + "," + arrayStrings[(i + 1) % arrayStrings.length] + "," + arrayStrings[(i + 2) % arrayStrings.length]);
-                    } else if(printNumbers == "4"){
-                        numbers = (arrayStrings[i] + "," + arrayStrings[(i + 1) % arrayStrings.length] + "," + arrayStrings[(i + 2) % arrayStrings.length] + "," + arrayStrings[(i + 3) % arrayStrings.length]);
-                    } else if(printNumbers == "5"){
-                        numbers = (arrayStrings[i] + "," + arrayStrings[(i + 1) % arrayStrings.length] + "," + arrayStrings[(i + 2) % arrayStrings.length] + "," + arrayStrings[(i + 3) % arrayStrings.length] + "," + arrayStrings[(i + 4) % arrayStrings.length]);
-                    }
+                    const numbers = getNumbers(i, arrayStrings);
                     newArray.push({
                         atIndex: i,
                         numbers: numbers
@@ -168,18 +132,7 @@ function SearchForm({label, customIndex}) {
             const newArray = [];
             for(let i = 0; i < arrayStrings.length - 5; i++){
                 if(arrayStrings[i] === term && arrayStrings[i + 1] === term && arrayStrings[i + 2] === term && arrayStrings[i + 3] === term && arrayStrings[i + 4] === term && arrayStrings[i + 5] === term){
-                    let numbers = "";
-                    if(printNumbers == "1"){
-                        numbers = (arrayStrings[i]);
-                    } else if(printNumbers == "2"){
-                        numbers = (arrayStrings[i] + "," + arrayStrings[(i + 1) % arrayStrings.length]);
-                    } else if(printNumbers == "3"){
-                        numbers = (arrayStrings[i] + "," + arrayStrings[(i + 1) % arrayStrings.length] + "," + arrayStrings[(i + 2) % arrayStrings.length]);
-                    } else if(printNumbers == "4"){
-                        numbers = (arrayStrings[i] + "," + arrayStrings[(i + 1) % arrayStrings.length] + "," + arrayStrings[(i + 2) % arrayStrings.length] + "," + arrayStrings[(i + 3) % arrayStrings.length]);
-                    } else if(printNumbers == "5"){
-                        numbers = (arrayStrings[i] + "," + arrayStrings[(i + 1) % arrayStrings.length] + "," + arrayStrings[(i + 2) % arrayStrings.length] + "," + arrayStrings[(i + 3) % arrayStrings.length] + "," + arrayStrings[(i + 4) % arrayStrings.length]);
-                    }
+                    const numbers = getNumbers(i, arrayStrings);
                     newArray.push({
                         atIndex: i,
                         numbers: numbers
@@ -263,6 +216,8 @@ function SearchForm({label, customIndex}) {
                             <FormControlLabel value={3} control={<Radio />} label="3" />
                             <FormControlLabel value={4} control={<Radio />} label="4" />
                             <FormControlLabel value={5} control={<Radio />} label="5" />
+                            <FormControlLabel value={6} control={<Radio />} label="6" />
+                            <FormControlLabel value={7} control={<Radio />} label="7" />
                         </RadioGroup> 
                     </Stack>
                 </Grid>
