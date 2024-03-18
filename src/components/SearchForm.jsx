@@ -146,6 +146,24 @@ function SearchForm({label, customIndex}) {
                 enqueueSnackbar("No matches found", {variant: 'error'});
             }
             setResults(newArray);
+        } else if(occurrences == "7"){
+            const newArray = [];
+            for(let i = 0; i < arrayStrings.length - 6; i++){
+                if(arrayStrings[i] === term && arrayStrings[i + 1] === term && arrayStrings[i + 2] === term && arrayStrings[i + 3] === term && arrayStrings[i + 4] === term && arrayStrings[i + 5] === term && arrayStrings[i + 6] === term){
+                    const numbers = getNumbers(i, arrayStrings);
+                    newArray.push({
+                        atIndex: i,
+                        numbers: numbers
+                    });
+                }
+            }
+            closeSnackbar();
+            if(newArray.length > 0) {
+                enqueueSnackbar("Found " + newArray.length + " matches", {variant: 'success'});
+            } else {
+                enqueueSnackbar("No matches found", {variant: 'error'});
+            }
+            setResults(newArray);
         }
 
 
@@ -196,6 +214,7 @@ function SearchForm({label, customIndex}) {
                             <FormControlLabel value={4} control={<Radio />} label="4" />
                             <FormControlLabel value={5} control={<Radio />} label="5" />
                             <FormControlLabel value={6} control={<Radio />} label="6" />
+                            <FormControlLabel value={7} control={<Radio />} label="7" />
                         </RadioGroup> 
                     </Stack>
                 </Grid>
