@@ -1,6 +1,7 @@
 import { Divider, Grid } from "@mui/material";
 import SearchForm from "./components/SearchForm";
 import { SnackbarProvider } from "notistack";
+import ReplaceForm from "./components/ReplaceForm";
 
 function App() {
 
@@ -44,6 +45,11 @@ function App() {
                     <SearchForm label={"Reel set 7"} customIndex={7}/>
                     <Divider>DIVIDER</Divider>
                 </Grid>                
+
+                <Grid item xs={12} >
+                    <ReplaceForm label={"Replace form"} customIndex={8}/>
+                    <Divider>DIVIDER</Divider>
+                </Grid>     
 
             </Grid>
 
